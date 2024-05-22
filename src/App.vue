@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import IconAccountBox from '~icons/ic/baseline-align-vertical-bottom'
 </script>
 
 <template>
@@ -7,6 +8,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="text-xl h-10 w-10 bg-green-300">
       Hello
     </div>
+    <IconAccountBox class="text-xl text-purple-600"/>
   </header>
 
   <RouterView />
