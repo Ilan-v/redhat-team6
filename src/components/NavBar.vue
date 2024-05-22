@@ -12,7 +12,7 @@ import { ref } from 'vue'
 const items = ref([
   {
     label: 'Home',
-    icon: 'pi pi-home'
+    icon: 'arrow_drop_down'
   },
   {
     label: 'Features',
