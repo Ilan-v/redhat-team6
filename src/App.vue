@@ -12,7 +12,6 @@ import HelpCarousel from "@/components/HelpCarousel/HelpCarousel.vue";
     <IconAccountBox class="text-xl text-purple-600" />
   </header>
   <HelpCarousel />
-
   <RouterView />
 </template>
 
