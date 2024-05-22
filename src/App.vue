@@ -1,17 +1,14 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
   <header>
-    <div class="text-xl h-10 w-10 bg-green-300">
-      Hello
-    </div>
+    <NavBar />
   </header>
 
   <RouterView />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
