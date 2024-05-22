@@ -1,9 +1,10 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import Button from "primevue/button"
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <div class="text-2xl text-bold">זה הבית</div>
+    <Button label="דךלכחשד"/>
   </main>
 </template>
