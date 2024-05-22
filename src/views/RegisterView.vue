@@ -1,6 +1,57 @@
 <template>
   <div class="flex justify-center">
-    <Stepper v-model:activeStep="active">
+    <Stepper v-model:activeStep="active" :pt="{ nav: { dir: 'rtl' } }">
+      <StepperPanel>
+        <template #header="{ index, clickCallback }">
+          <button
+            class="bg-transparent border-none inline-flex flex-col gap-2"
+            @click="clickCallback"
+          >
+            <span
+              :class="[
+                'rounded-md border-2 w-[3rem] h-[3rem] inline-flex items-center justify-center',
+                {
+                  'bg-primaryborder-primary*500 dark:border-primary-400': index <= active,
+                  'border-surface-200 dark:border-surface-700': index > active
+                }
+              ]"
+            >
+              <i class="pi pi-home" />
+            </span>
+          </button>
+        </template>
+        <template #content="{ nextCallback }">
+          <div class="text-center mt-3 mb-3 text-xl font-semibold">מפונה?</div>
+          <SelectButton
+            v-model="isEvacuated"
+            :options="evacuatedOptions"
+            option-label="text"
+            aria-labelledby="basic"
+            class="text-center"
+          />
+          <div v-if="evacStatus" dir="rtl">
+            <div class="text-center mt-3 mb-3 text-l font-semibold">קוד מפונה מהעמותה:</div>
+            <InputOtp
+              dir="ltr"
+              class="justify-center"
+              v-model="verificationCode"
+              @change="formatCode"
+              :length="6"
+            />
+          </div>
+          <div class="flex pt-4 justify-start">
+            <Button
+              dir="rtl"
+              label="הבא"
+              icon="pi pi-arrow-left"
+              iconPos="right"
+              :disabled="isValidEvac"
+              @click="nextCallback"
+            />
+          </div>
+        </template>
+      </StepperPanel>
+
       <StepperPanel>
         <template #header="{ index, clickCallback }">
           <button
@@ -20,10 +71,37 @@
             </span>
           </button>
         </template>
-        <template #content="{ nextCallback }">
-          <RegistrationCard @next-callback="nextCallback" />
+        <template #content="{ prevCallback, nextCallback }">
+          <RegistrationCard @next-callback="nextCallback" @prev-callback="prevCallback" />
         </template>
       </StepperPanel>
+
+      <StepperPanel v-if="evacStatus">
+        <template #header="{ index, clickCallback }">
+          <button
+            class="bg-transparent border-none inline-flex flex-col gap-2"
+            @click="clickCallback"
+          >
+            <span
+              :class="[
+                'rounded-md border-2 w-[3rem] h-[3rem] inline-flex items-center justify-center',
+                {
+                  'bg-primaryborder-primary*500 dark:border-primary-400': index <= active,
+                  'border-surface-200 dark:border-surface-700': index > active
+                }
+              ]"
+            >
+              <span class="material-symbols-outlined" style="font-size: 1.4rem">
+                location_away
+              </span>
+            </span>
+          </button>
+        </template>
+        <template #content="{ prevCallback, nextCallback }">
+          <EvacuatedRegistration @next-callback="nextCallback" @prev-callback="prevCallback" />
+        </template>
+      </StepperPanel>
+
       <StepperPanel>
         <template #header="{ index, clickCallback }">
           <button
@@ -70,6 +148,7 @@
           </div>
         </template>
       </StepperPanel>
+
       <StepperPanel>
         <template #header="{ index, clickCallback }">
           <button
@@ -117,8 +196,26 @@
 
 <script setup>
 import RegistrationCard from '../components/RegistrationCard.vue'
+import EvacuatedRegistration from '../components/EvacuatedRegistration.vue'
 
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
+const isEvacuated = ref()
+const evacuatedOptions = ref([
+  { text: 'כן', value: true },
+  { text: 'לא', value: false }
+])
+
+const evacStatus = computed(() => (isEvacuated.value ? isEvacuated.value.value : false))
+
+const isValidEvac = computed(
+  () => evacStatus.value && verificationCode.value && verificationCode.value.length !== 6
+)
+
+const verificationCode = ref('')
+const formatCode = () => {
+  verificationCode.value = verificationCode.value.toUpperCase()
+}
 
 const active = ref(0)
 
