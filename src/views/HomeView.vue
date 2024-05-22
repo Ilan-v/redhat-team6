@@ -2,7 +2,7 @@
 import { gsap } from "gsap";
 import {onMounted, onUnmounted} from "vue";
 import ImageBlob from "@/components/ImageBlob.vue";
-import CompareArrows from '~icons/ic/twotone-compare-arrows';
+import CompareArrows from '~icons/tdesign/arrow-up-down-3';
 const timeline = gsap.timeline({paused: true, defaults: {duration: 2}});
 
 onMounted(() => {
@@ -55,10 +55,10 @@ onUnmounted(() => {
 
       קולורס מונפרד אדנדום סילקוף, מרגשי ומרגשח. עמחליף לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית.
     </p>
-    <div class="welcome-stag flex items-center -mt-10 text-lg mx-auto text-center w-fit">
-      <router-link class="action-link -translate-y-12">אני מעוניין לעזור!</router-link>
-      <CompareArrows class="text-orange-200 text-[20rem]"/>
-      <router-link to="/ff" class="action-link translate-y-12">אני אשמח לעזרה</router-link>
+    <div class="welcome-stag flex items-center -mt text-lg mx-auto text-center w-fit">
+      <router-link class="action-link -translate-y-[4.4rem]">אני מעוניין לעזור!</router-link>
+      <CompareArrows class="text-orange-200 text-[18rem] rotate-90"/>
+      <router-link to="/ff" class="action-link translate-y-[4rem]">אני אשמח לעזרה</router-link>
     </div>
   </main>
 </template>
