@@ -7,11 +7,24 @@ import IconAccountBox from '~icons/ic/baseline-align-vertical-bottom'
 <template>
   <header>
     <NavBar />
-    <div class="text-xl h-10 w-10 bg-green-300">Hello</div>
-    <IconAccountBox class="text-xl text-purple-600" />
   </header>
-
-  <RouterView />
+  <router-view v-slot="{ Component }">
+    <transition mode="out-in" name="fade">
+      <component :is="Component" />
+    </transition>
+  </router-view>
 </template>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s 0.5s;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+}
+</style>
