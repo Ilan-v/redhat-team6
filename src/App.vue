@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import IconAccountBox from '~icons/ic/baseline-align-vertical-bottom'
+import HelpCarousel from "@/components/HelpCarousel/HelpCarousel.vue";
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import IconAccountBox from '~icons/ic/baseline-align-vertical-bottom'
     </div>
     <IconAccountBox class="text-xl text-purple-600"/>
   </header>
+  <HelpCarousel />
 
   <RouterView />
 </template>
