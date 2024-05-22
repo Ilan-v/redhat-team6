@@ -21,7 +21,7 @@
           </button>
         </template>
         <template #content="{ nextCallback }">
-          <div class="text-center mt-3 mb-3 text-xl font-semibold">מפונה?</div>
+          <div dir="rtl" class="text-center mt-3 mb-3 text-xl font-semibold">מפונה?</div>
           <SelectButton
             v-model="isEvacuated"
             :options="evacuatedOptions"
@@ -122,30 +122,7 @@
           </button>
         </template>
         <template #content="{ prevCallback, nextCallback }">
-          <div class="flex flex-col gap-2 mx-auto" style="min-height: 16rem; max-width: 24rem">
-            <div class="text-center mt-3 mb-3 text-xl font-semibold">Choose your interests</div>
-            <div class="flex flex-wrap justify-center gap-3">
-              <ToggleButton v-model="option1" onLabel="Nature" offLabel="Nature" />
-              <ToggleButton v-model="option2" onLabel="Art" offLabel="Art" />
-              <ToggleButton v-model="option3" onLabel="Music" offLabel="Music" />
-              <ToggleButton v-model="option4" onLabel="Design" offLabel="Design" />
-              <ToggleButton v-model="option5" onLabel="Photography" offLabel="Photography" />
-              <ToggleButton v-model="option6" onLabel="Movies" offLabel="Movies" />
-              <ToggleButton v-model="option7" onLabel="Sports" offLabel="Sports" />
-              <ToggleButton v-model="option8" onLabel="Gaming" offLabel="Gaming" />
-              <ToggleButton v-model="option9" onLabel="Traveling" offLabel="Traveling" />
-              <ToggleButton v-model="option10" onLabel="Dancing" offLabel="Dancing" />
-            </div>
-          </div>
-          <div class="flex pt-4 justify-between">
-            <Button
-              label="Back"
-              severity="secondary"
-              icon="pi pi-arrow-left"
-              @click="prevCallback"
-            />
-            <Button label="Next" icon="pi pi-arrow-right" iconPos="right" @click="nextCallback" />
-          </div>
+          <ProfileLikes @next-callback="nextCallback" @prev-callback="prevCallback" />
         </template>
       </StepperPanel>
 
@@ -180,11 +157,12 @@
               />
             </div>
           </div>
-          <div class="flex pt-4 justify-start">
+          <div class="flex pt-4 justify-end">
             <Button
-              label="Back"
+              label="אחורה"
               severity="secondary"
-              icon="pi pi-arrow-left"
+              icon="pi pi-arrow-right"
+              iconPos="right"
               @click="prevCallback"
             />
           </div>
@@ -197,6 +175,7 @@
 <script setup>
 import RegistrationCard from '../components/RegistrationCard.vue'
 import EvacuatedRegistration from '../components/EvacuatedRegistration.vue'
+import ProfileLikes from '../components/ProfileLikes.vue'
 
 import { ref, computed } from 'vue'
 
@@ -218,17 +197,6 @@ const formatCode = () => {
 }
 
 const active = ref(0)
-
-const option1 = ref(false)
-const option2 = ref(false)
-const option3 = ref(false)
-const option4 = ref(false)
-const option5 = ref(false)
-const option6 = ref(false)
-const option7 = ref(false)
-const option8 = ref(false)
-const option9 = ref(false)
-const option10 = ref(false)
 </script>
 
 <style scoped>
