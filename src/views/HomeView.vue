@@ -45,7 +45,7 @@ onUnmounted(() => {
 
 <template>
   <main class="px-6 py-3">
-    <ImageBlob id="top-blob" image-url="https://www.bwh.co.il/wp-content/uploads/%D7%A1%D7%95%D7%92%D7%99-%D7%94%D7%AA%D7%A0%D7%93%D7%91%D7%95%D7%AA.jpg" />
+    <ImageBlob id="top-blob" class="z-20" image-url="https://www.bwh.co.il/wp-content/uploads/%D7%A1%D7%95%D7%92%D7%99-%D7%94%D7%AA%D7%A0%D7%93%D7%91%D7%95%D7%AA.jpg" />
     <ImageBlob id="bottom-blob" image-url="https://www.makorrishon.co.il/wp-content/uploads/2023/10/2.jpeg" />
     <h2 class="welcome-stag text-5xl">אז קצת עלינו ...</h2>
     <p class="welcome-stag text-xl mr-3 w-[70%]">

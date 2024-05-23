@@ -5,7 +5,7 @@ const router = useRouter();
 </script>
 
 <template>
-  <nav class="flex gap-x-4 px-2 items-center w-full h-20 bg-white">
+  <nav class="flex gap-x-4 px-2 items-center w-full h-20 bg-white shadow relative">
     <img class="h-[80%] -ml-2" src="/logo.png" alt="logo">
     <h1 class="text-6xl ml-4">בית חם</h1>
     <router-link

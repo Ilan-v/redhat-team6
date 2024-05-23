@@ -7,7 +7,7 @@ const props = defineProps({
   id: String,
   title: String,
   description: String,
-  numEvac: String,
+  numEvac: Number,
   imgUrl: String,
 });
 
