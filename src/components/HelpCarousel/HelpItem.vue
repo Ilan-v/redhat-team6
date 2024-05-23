@@ -1,8 +1,9 @@
 <script setup>
 import Card from 'primevue/card';
 import Button from 'primevue/button';
+import EventCard from '../EventCard.vue';
 import { ref, onMounted } from "vue";
-
+const dialog = ref(null)
 const props = defineProps({
   id: String,
   title: String,
@@ -12,7 +13,7 @@ const props = defineProps({
 });
 
 const signUp = () => {
-  console.log('added user ' + props.id)
+  dialog.value.showDia();
 }
 </script>
 
@@ -30,7 +31,7 @@ const signUp = () => {
     </template>
     <template #title>{{ title }}</template>
     <template #content>
-      <p class="m-0 h-20 overflow-auto text-gray-600">
+      <p class="m-0 w-full h-20 overflow-auto text-gray-600">
         {{ description }}
       </p>
     </template>
@@ -41,10 +42,11 @@ const signUp = () => {
         </div>
         <Button
           @click="signUp"
-          label="רשמו אותי"
+          label=" מידע נוסף"
           class="w-30"
         />
       </div>
     </template>
   </Card>
+  <EventCard ref="dialog" :event-id="id" :title="title" :description="description" :num-evac="numEvac" :img-url="imgUrl" />
 </template>
