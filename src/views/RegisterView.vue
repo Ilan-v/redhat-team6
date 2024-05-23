@@ -1,5 +1,65 @@
+<script setup>
+import RegistrationCard from '../components/RegistrationCard.vue'
+import EvacuatedRegistration from '../components/EvacuatedRegistration.vue'
+import ProfileLikes from '../components/ProfileLikes.vue'
+import ImageBlob from '../components/ImageBlob.vue'
+
+import {ref, computed, onMounted, onUnmounted} from 'vue'
+import {gsap} from "gsap";
+
+const isEvacuated = ref()
+const evacuatedOptions = ref([
+  { text: 'כן', value: true },
+  { text: 'לא', value: false }
+])
+
+const evacStatus = computed(() => (isEvacuated.value ? isEvacuated.value.value : false))
+
+const isValidEvac = computed(
+    () => evacStatus.value && verificationCode.value && verificationCode.value.length !== 6
+)
+
+const verificationCode = ref('')
+const formatCode = () => {
+  verificationCode.value = verificationCode.value.toUpperCase()
+}
+
+const active = ref(0);
+
+const timeline = gsap.timeline({paused: true, defaults: {duration: 2}});
+
+onMounted(() => {
+  timeline.fromTo('#top-blob', {
+    left: -1000,
+    bottom: -1000,
+    rotate: 180,
+  }, {
+    left: -350,
+    bottom: -200,
+    rotate: -90,
+  }).fromTo('#bottom-blob', {
+    right: -1000,
+    bottom: -1000,
+    rotate: 180,
+  }, {
+    right: -350,
+    bottom: -300,
+    rotate: 40,
+  }, -0.2)
+
+  timeline.play();
+})
+
+onUnmounted(() => {
+  timeline.timeScale(3);
+  timeline.reverse();
+})
+</script>
+
 <template>
-  <div class="flex justify-center">
+  <div dir="ltr" class="flex justify-center border w-1/3 h-[45rem] mt-2 bg-white mx-auto p-2 rounded-xl">
+    <ImageBlob id="top-blob" image-url="/orange.png" no-shadow />
+    <ImageBlob id="bottom-blob" image-url="/orange.png" no-shadow />
     <Stepper v-model:activeStep="active" :pt="{ nav: { dir: 'rtl' } }">
       <StepperPanel>
         <template #header="{ index, clickCallback }">
@@ -171,33 +231,6 @@
     </Stepper>
   </div>
 </template>
-
-<script setup>
-import RegistrationCard from '../components/RegistrationCard.vue'
-import EvacuatedRegistration from '../components/EvacuatedRegistration.vue'
-import ProfileLikes from '../components/ProfileLikes.vue'
-
-import { ref, computed } from 'vue'
-
-const isEvacuated = ref()
-const evacuatedOptions = ref([
-  { text: 'כן', value: true },
-  { text: 'לא', value: false }
-])
-
-const evacStatus = computed(() => (isEvacuated.value ? isEvacuated.value.value : false))
-
-const isValidEvac = computed(
-  () => evacStatus.value && verificationCode.value && verificationCode.value.length !== 6
-)
-
-const verificationCode = ref('')
-const formatCode = () => {
-  verificationCode.value = verificationCode.value.toUpperCase()
-}
-
-const active = ref(0)
-</script>
 
 <style scoped>
 .p-stepper {

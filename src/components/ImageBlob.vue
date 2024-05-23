@@ -1,6 +1,7 @@
 <script setup>
 defineProps({
   imageUrl: String,
+  noShadow: Boolean,
 })
 </script>
 
@@ -13,7 +14,7 @@ defineProps({
       viewBox="0 0 310 350"
   >
     <defs>
-      <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <filter v-if="!noShadow" id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
         <feOffset result="offOut" in="SourceGraphic" dx="10" dy="10" />
         <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
         <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />

@@ -58,7 +58,7 @@ onUnmounted(() => {
     <div class="welcome-stag flex items-center -mt text-lg mx-auto text-center w-fit">
       <router-link class="action-link -translate-y-[4.4rem]">אני מעוניין לעזור!</router-link>
       <CompareArrows class="text-orange-200 text-[18rem] rotate-90"/>
-      <router-link to="/ff" class="action-link translate-y-[4rem]">אני אשמח לעזרה</router-link>
+      <router-link to="/register" class="action-link translate-y-[4rem]">אני אשמח לעזרה</router-link>
     </div>
   </main>
 </template>
