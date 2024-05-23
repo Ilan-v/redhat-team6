@@ -8,7 +8,7 @@ const props = defineProps({
   id: String,
   title: String,
   description: String,
-  numEvac: Number,
+  num_evac: Number,
   imgUrl: String,
 });
 
@@ -27,7 +27,7 @@ const signUp = () => {
     }"
   >
     <template #header>
-      <img class="w-full h-40 object-cover border-round" alt="photo" :src="imgUrl" />
+      <img class="w-full h-40 object-cover border-round" alt="photo" src="/heart.png" />
     </template>
     <template #title>{{ title }}</template>
     <template #content>
@@ -38,7 +38,7 @@ const signUp = () => {
     <template #footer>
       <div class="flex justify-between gap-3 mt-1">
         <div class="text-gray-400 text-sm">
-          10/{{numEvac}}
+          10/{{num_evac}}
         </div>
         <Button
           @click="signUp"

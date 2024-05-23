@@ -3,7 +3,7 @@
         <Dialog dismissableMask="true" v-model:visible="visible" modal :header="eventId" :style="{ width: '50rem', height: '150rem' }">
             <template #header>
                 <div class="w-full h-50 object-cover border-round">
-                    <img class="w-full h-40 object-cover border-round" alt="photo" :src="imgUrl" />
+                    <img class="w-full h-40 object-cover border-round" alt="photo" src="/heart.png" />
                     <span class="font-bold mb-2" style="font-size:x-large;">{{ title }}</span>
                 </div>
             </template>

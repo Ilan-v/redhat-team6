@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue'
 import { RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import IconAccountBox from '~icons/ic/baseline-align-vertical-bottom'
